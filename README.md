@@ -1,0 +1,1 @@
+# INFOSYS-Real-Time-Competitor-Strategy-Tracker-For-E-Commerce
