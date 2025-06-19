@@ -91,7 +91,7 @@ def forecast_discounts(data, days=7):
     data = data.dropna(subset=['discount'])  # Remove NaN values
     
     # Ensure enough data points
-    if len(data) > 5:
+    if len(data) < 5:
         raise ValueError("Not enough data points for ARIMA forecasting.")
 
     # Ensure non-constant discount values
@@ -251,7 +251,10 @@ def main():
     # Forecasting
     st.subheader("Price & Discount Forecasting")
     forecast_data = forecast_discounts(filtered_data)
-    
+    if forecast_data is None:
+    st.info("Forecasting skipped due to insufficient data.")
+    return  # Stop rendering the rest of the app
+
     fig_forecast = go.Figure()
     fig_forecast.add_trace(go.Scatter(
         x=filtered_data['date'],
