@@ -91,7 +91,7 @@ def forecast_discounts(data, days=7):
     data = data.dropna(subset=['discount'])  # Remove NaN values
     
     # Ensure enough data points
-    if len(data) < 5:
+    if len(data) > 5:
         raise ValueError("Not enough data points for ARIMA forecasting.")
 
     # Ensure non-constant discount values
